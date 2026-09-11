@@ -33,14 +33,17 @@ features print *small*, which is incompatible with walls thin enough to explain 
 Derive the opening from `outer − 2 × wall` instead; wall thickness can be measured
 end-on at the drawer opening where nothing can flex.
 
+**Dovetail interlock: VERIFIED, assembles by hand, tight on first fit.** Leave it.
+Snug is correct — it is what keeps a tall stack from racking, and PLA dovetails burnish
+their layer-line high spots on the first few assemblies and then ease. Do NOT adjust
+`dovetail_size` or `connector_support_tolerance` in `modules/constants.scad`: they are
+not customizer parameters, the model flags them compatibility-altering, and changing
+them means new housings will not mate with the ones already printed.
+
 Open:
 
 1. Print plate 2 (drawers), plate 3 (bins).
-2. **Dovetail interlock is TIGHT** — snug is correct and keeps a tall stack rigid, but
-   confirm it assembles by hand rather than by force. Dovetail geometry lives in
-   `modules/constants.scad` (`dovetail_size`, `connector_support_tolerance`), not in
-   the customizer, and is flagged compatibility-altering — do not adjust it casually.
-3. Decide whether magnets are needed at all — see **Magnets** below.
+2. Decide whether magnets are needed at all — see **Magnets** below.
 
 ---
 
