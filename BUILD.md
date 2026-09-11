@@ -9,20 +9,38 @@ below was measured or sliced, not estimated, unless it says otherwise.
 
 ---
 
-## STATUS — 2026-09-10
+## STATUS — 2026-09-11
 
-Printing **plate 1** (2 × housing, black, 333 g, 15h12m). Plates 2 and 3 not started.
+**Plate 1 printed and VERIFIED. Dimensions confirmed on the machine; no tolerance
+change needed.** Plates 2 and 3 cleared to print as-is.
 
-Open, in order:
+Measured on the black housings (SUNLU HS PLA+, A1, 215/230, Flow Dynamics on):
 
-1. **Measure the housing inner opening → target 56.00 mm.** This is the go/no-go for
-   plates 2 and 3. Within ±0.1 mm, print them. Outside, regenerate at a corrected
-   `Drawer_Tolerance` first.
-2. **Interlock the two housings** — vertically (top tabs into bottom slots) and
-   laterally (right-edge tabs into left-edge slots). The calibration gauge could not
-   test this; it is the one unproven mechanism in the design.
-3. Print plate 2 (drawers), plate 3 (bins).
-4. Decide whether magnets are needed at all — see **Magnets** below.
+| | Nominal | Measured | Δ |
+|---|---|---|---|
+| Outer height | 66.00 | 66.18 (mean of 5: 66.17/66.06/66.36/66.18/66.12) | +0.18 |
+| Wall thickness | 5.00 | 5.01, 5.13 | +0.07 |
+| **Inner opening (derived)** | **56.00** | **56.04** | **+0.04** |
+
+Overall scale error is +0.27%, ordinary for PLA. Expected drawer gap 1.04 mm against
+the designed 1.00 mm.
+
+**MEASURE THE OPENING INDIRECTLY, NOT WITH INTERNAL JAWS.** A direct internal reading
+gave 56.7 — 0.66 mm high — because the caliper's internal jaws spread the top and
+bottom walls, which span 195 mm. Two independent signals caught it: the outer
+dimension was only +0.18, and the dovetail interlock came out TIGHT, meaning internal
+features print *small*, which is incompatible with walls thin enough to explain +0.7.
+Derive the opening from `outer − 2 × wall` instead; wall thickness can be measured
+end-on at the drawer opening where nothing can flex.
+
+Open:
+
+1. Print plate 2 (drawers), plate 3 (bins).
+2. **Dovetail interlock is TIGHT** — snug is correct and keeps a tall stack rigid, but
+   confirm it assembles by hand rather than by force. Dovetail geometry lives in
+   `modules/constants.scad` (`dovetail_size`, `connector_support_tolerance`), not in
+   the customizer, and is flagged compatibility-altering — do not adjust it casually.
+3. Decide whether magnets are needed at all — see **Magnets** below.
 
 ---
 
