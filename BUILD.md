@@ -9,41 +9,49 @@ below was measured or sliced, not estimated, unless it says otherwise.
 
 ---
 
-## STATUS — 2026-09-11
+## STATUS — 2026-09-12 · BUILD COMPLETE
 
-**Plate 1 printed and VERIFIED. Dimensions confirmed on the machine; no tolerance
-change needed.** Plates 2 and 3 cleared to print as-is.
+**All three plates printed. Everything fits.** Two housings, two drawers, eight bins —
+a working two-drawer module, ~840 g, ~31 h across three single-colour plates.
 
-Measured on the black housings (SUNLU HS PLA+, A1, 215/230, Flow Dynamics on):
+The configuration in this repo is now **validated end to end**: calibration gauge →
+housings → drawers → bins → assembled module. Reprinting `./render-starter.sh` output
+at these settings reproduces a known-good result. Nothing here is provisional.
+
+Verified along the way, on the machine:
 
 | | Nominal | Measured | Δ |
 |---|---|---|---|
-| Outer height | 66.00 | 66.18 (mean of 5: 66.17/66.06/66.36/66.18/66.12) | +0.18 |
-| Wall thickness | 5.00 | 5.01, 5.13 | +0.07 |
-| **Inner opening (derived)** | **56.00** | **56.04** | **+0.04** |
+| Housing outer height | 66.00 | 66.18 (mean of 5) | +0.18 |
+| Housing wall | 5.00 | 5.01, 5.13 | +0.07 |
+| **Housing inner opening (derived)** | **56.00** | **56.04** | **+0.04** |
 
-Overall scale error is +0.27%, ordinary for PLA. Expected drawer gap 1.04 mm against
-the designed 1.00 mm.
+Overall scale error +0.27%, ordinary for PLA. `Drawer_Tolerance = 0.5` confirmed
+correct against real parts, not just against the gauge.
 
-**MEASURE THE OPENING INDIRECTLY, NOT WITH INTERNAL JAWS.** A direct internal reading
-gave 56.7 — 0.66 mm high — because the caliper's internal jaws spread the top and
-bottom walls, which span 195 mm. Two independent signals caught it: the outer
+**MEASURE AN OPENING INDIRECTLY, NOT WITH INTERNAL JAWS.** A direct internal reading
+gave 56.7 — 0.66 mm high — because the jaws spread walls spanning 195 mm, and it very
+nearly caused a needless tolerance correction. Two signals contradicted it: the outer
 dimension was only +0.18, and the dovetail interlock came out TIGHT, meaning internal
 features print *small*, which is incompatible with walls thin enough to explain +0.7.
-Derive the opening from `outer − 2 × wall` instead; wall thickness can be measured
-end-on at the drawer opening where nothing can flex.
+Derive it from `outer − 2 × wall`, measuring wall end-on at the drawer opening where
+nothing can flex.
 
-**Dovetail interlock: VERIFIED, assembles by hand, tight on first fit.** Leave it.
-Snug is correct — it is what keeps a tall stack from racking, and PLA dovetails burnish
-their layer-line high spots on the first few assemblies and then ease. Do NOT adjust
-`dovetail_size` or `connector_support_tolerance` in `modules/constants.scad`: they are
-not customizer parameters, the model flags them compatibility-altering, and changing
-them means new housings will not mate with the ones already printed.
+**Dovetail interlock: assembles by hand, tight on first fit. Leave it.** Snug is what
+keeps a tall stack from racking, and PLA dovetails burnish their layer-line high spots
+over the first few assemblies. Do NOT adjust `dovetail_size` or
+`connector_support_tolerance` in `modules/constants.scad`: they are not customizer
+parameters, the model flags them compatibility-altering, and changing them means new
+housings will not mate with the ones already printed.
 
-Open:
+### Open
 
-1. Print plate 2 (drawers), plate 3 (bins).
-2. Decide whether magnets are needed at all — see **Magnets** below.
+1. **Magnets — still undecided, and still possibly unnecessary.** Now testable: load
+   the bins, tip and shake a drawer. If nothing moves, skip 128 magnets entirely. See
+   **Magnets** below. Nothing is blocked either way — pockets stay accessible forever.
+2. **Expansion.** More modules at these exact settings, stacking up or sideways. The
+   footprint and tolerance are fixed; only `Height_Units` should ever vary
+   (`1.0`=6u, `1.5`=9u, `2.0`=12u).
 
 ---
 
