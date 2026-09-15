@@ -238,6 +238,44 @@ V1 works. Nothing here is required. Each item records what is actually blocking 
 a later session does not re-derive the analysis. Ordered by value-for-effort, honestly
 assessed rather than optimistically.
 
+## Operator-selected for V2 — 2026-09-14
+
+Three items chosen: **drawer magnets**, **removable divider panels**, **printed
+labels**. Each is analysed below in its own section; the summary of where each
+actually stands:
+
+| | Status | Blocked on |
+|---|---|---|
+| Drawer magnets | analysed, geometry hostile | does a drawer actually drift open? |
+| Removable panels | **reframed — see below** | probably wants fixed dividers instead |
+| Printed labels | analysed, tab already future-proofed | layout stability |
+
+### Removable divider panels — READ THIS BEFORE BUILDING IT
+
+**Gridfinity bins already ARE removable dividers, one level up.** A 4x1 space can hold
+one 4x1 bin, two 2x1s, or four 1x1s. Reconfiguring means swapping bins — and that is
+strictly better than panels, because each compartment lifts out independently and can
+be carried to the bench.
+
+**The real gap is only BELOW 42 mm** — splitting a single cell into halves or thirds,
+where no smaller bin exists because 42 mm is the grid floor. Above 42 mm, swapping bins
+already does the job and no panel system is needed.
+
+For sub-cell division there are two routes:
+
+- **Fixed dividers — free, works today.** `divx`/`divy` in the vendored generator. A 1x1
+  with `divx = 2` gives two 21 mm compartments. Nothing new to build or calibrate.
+- **Removable panels — needs a different bin model.** The vendored generator does fixed
+  dividers only (`cutEqual`); there is no slot/panel support in it. Ecosystem options:
+  gridfinitylayouttool.com's generator exports dividers as separate files, and
+  MakerWorld has "Gridfinity Bins with Movable Dividers".
+
+**RECOMMENDATION: fixed.** A removable system needs a groove-and-panel fit calibrated
+exactly the way `Drawer_Tolerance` was — several test prints before it is right. A bin
+costs 21-71 g and under an hour to reprint. Unless the layout changes weekly,
+reprinting a bin is cheaper than paying that calibration loop once. Revisit only if you
+find yourself reprinting bins often.
+
 ## Ready — no unknowns, just work
 
 **Divided bins.** *Every V1 bin is a single compartment, and that was never a decision
