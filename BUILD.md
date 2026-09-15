@@ -362,3 +362,82 @@ which is ordinary PLA shrinkage and well inside tolerance. Nothing to fix.
 at depth 4). But **depth is the one dimension that must never vary** — mixing depths
 breaks alignment across the whole system. If you ever want deeper drawers, build a
 SEPARATE tower, do not extend this one.
+
+---
+
+# Hardware drawers — 2 x 6u, two levels, one bin per size
+
+Decided 2026-09-15. Stores two kits: a Hilitchi 420pc M2/M3 hex socket cap screw +
+nut assortment (12 categories) and a 400pc threaded insert assortment (15 categories).
+**27 categories.**
+
+**One STL, printed 27 times: `hardware/bin-1x1x2.stl`** — 1x1 footprint, 2u tall,
+magnet holes, label tab, scoop. 15.3 g each, **413 g total, ~14 h, two plates (14 + 13
+at 5 x 5 per plate).**
+
+## Why this shape
+
+**Two levels, not one.** Gridfinity bins stack — the upper bin's base nests into the
+lower one's lip. 8 cells x 2 levels = 16 positions per drawer, 32 across two drawers,
+for 27 categories. One level could not do it without dividing bins, and a divided bin
+gets ONE label tab no matter how many compartments are inside. **Tabs = bins**, so one
+bin per size is the only way every category gets its own label.
+
+**2u, not 3u.** 2u holds every batch you own — the worst cases are 30 x M3*20 bolts
+(12,752 mm^3 packed loose) and 40 x M3*8*5 inserts (12,566 mm^3), against 19,166 mm^3
+in a 2u bin. 3u would work too and costs 158 g more. **1u does NOT work** — 9,583 mm^3,
+and those two insert batches overflow it.
+
+**Fingers fit.** A 1x1 interior is ~37 mm. The divided-bin alternative gave 12-19 mm
+compartments, which is tweezers-and-tilt territory. 8 cells over 27 categories caps any
+single-level design at ~23 mm even if perfectly divided — that is arithmetic, not
+preference.
+
+**Headroom: 30.7 mm used of 50.6 mm.** Columns stack independently, so any one cell can
+later take a 3u on top of a 2u (37.7 mm) if a category outgrows its bin, without
+touching the rest.
+
+## Layout — most-used on top, because reaching the lower level means lifting one bin
+
+### Drawer 1 — SCREWS (12 bins, 4 positions spare)
+
+| Level | Contents |
+|---|---|
+| **Top** | M3x6 · M3x8 · M3x12 · M3x16 · M3x20 · M3 nuts |
+| Bottom | M2x6 · M2x8 · M2x12 · M2x16 · M2x20 · M2 nuts |
+
+M3 is the common case for printed parts, so it is never covered.
+
+### Drawer 2 — INSERTS (15 bins, 1 position spare)
+
+| Level | Contents |
+|---|---|
+| **Top** | M2x2x3.2 · M2x4x3.2 · M2.5x2.5x3.5 · M2.5x4x3.5 · M3x4x5 · M3x6x5 · M3x8x5 · M4x4x6 |
+| Bottom | M4x6x6 · M4x8x6 · M5x6x7 · M5x8x7 · M5x10x7 · M6x8x8 · M6x10x8 |
+
+Insert notation is **M(thread) x (length) x (outside diameter)** — read off the kit lid.
+
+## Labels — 27 strings for a label maker
+
+```
+Drawer 1  M3x6   M3x8   M3x12  M3x16  M3x20  M3 nuts
+          M2x6   M2x8   M2x12  M2x16  M2x20  M2 nuts
+
+Drawer 2  M2x2   M2x4   M2.5x2.5  M2.5x4  M3x4  M3x6  M3x8  M4x4
+          M4x6   M4x8   M5x6      M5x8    M5x10 M6x8  M6x10
+```
+
+The tab is 36 mm wide on every bin, so one label size fits all 27 — and every future
+bin in the system. Tape, not printed inserts: these categories are ISO-standard and will
+not change, but the bins may move between drawers, and tape survives that.
+
+## The alternative that was rejected, and why
+
+A single **12u drawer** holds all 27 in one place — but 8 cells x 4 levels is what it
+takes, meaning **lifting three bins** to reach the bottom, plus a new 421 g module and
+15 h of printing, for worse access than two drawers give. Two 6u drawers already exist,
+print nothing new beyond the bins, and never require lifting more than one.
+
+**The bins are identical either way.** If hardware later earns its own module, or the
+6u drawers are wanted back for project parts, the same 27 bins restack into a 12u
+drawer with nothing wasted.
