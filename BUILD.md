@@ -372,8 +372,14 @@ nut assortment (12 categories) and a 400pc threaded insert assortment (15 catego
 **27 categories.**
 
 **One STL, printed 27 times: `hardware/bin-1x1x3.stl`** — 1x1 footprint, **3u tall**,
-magnet holes, label tab, scoop. 21.1 g each, **571 g total, ~20 h, two plates (14 + 13
-at 5 x 5 per plate).**
+magnet holes, label tab, scoop. **6.95 g each MEASURED FROM THE SLICER — 188 g total,
+~18h21m, two plates (25 + 2).** 25 fit comfortably on a 256 bed.
+
+> **DO NOT ESTIMATE BIN MASS FROM MESH VOLUME.** It was predicted at 21.1 g each and
+> sliced at 6.95 g — **3x over**. The solid-volume method is accurate for housings and
+> drawers (2% and 0.1% in V1) and invalid for small thin-walled hollow parts: the
+> enclosed volume bears little relation to what is extruded. V1 already flagged it at
+> 29% high for bins and it was applied again anyway. **Slice, do not estimate.**
 
 > **3u, NOT 2u — AND THIS IS NOT A COST DECISION.** An earlier version of this plan
 > specified 2u to save 158 g. That is wrong: **the generator suppresses the label tab
