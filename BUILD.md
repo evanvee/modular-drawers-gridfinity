@@ -371,9 +371,17 @@ Decided 2026-09-15. Stores two kits: a Hilitchi 420pc M2/M3 hex socket cap screw
 nut assortment (12 categories) and a 400pc threaded insert assortment (15 categories).
 **27 categories.**
 
-**One STL, printed 27 times: `hardware/bin-1x1x2.stl`** — 1x1 footprint, 2u tall,
-magnet holes, label tab, scoop. 15.3 g each, **413 g total, ~14 h, two plates (14 + 13
+**One STL, printed 27 times: `hardware/bin-1x1x3.stl`** — 1x1 footprint, **3u tall**,
+magnet holes, label tab, scoop. 21.1 g each, **571 g total, ~20 h, two plates (14 + 13
 at 5 x 5 per plate).**
+
+> **3u, NOT 2u — AND THIS IS NOT A COST DECISION.** An earlier version of this plan
+> specified 2u to save 158 g. That is wrong: **the generator suppresses the label tab
+> entirely at 2u and below**, regardless of `style_tab`, because the library disables
+> tabs that would "take up too much space". Verified by differential facet count —
+> `style_tab=1` and `style_tab=5` (None) produce byte-identical geometry at 1u and 2u,
+> and diverge at 3u and above. A tabless bin cannot carry a label, which is the entire
+> reason for one-bin-per-size. **Do not 'optimise' this back to 2u.**
 
 ## Why this shape
 
@@ -383,17 +391,18 @@ for 27 categories. One level could not do it without dividing bins, and a divide
 gets ONE label tab no matter how many compartments are inside. **Tabs = bins**, so one
 bin per size is the only way every category gets its own label.
 
-**2u, not 3u.** 2u holds every batch you own — the worst cases are 30 x M3*20 bolts
-(12,752 mm^3 packed loose) and 40 x M3*8*5 inserts (12,566 mm^3), against 19,166 mm^3
-in a 2u bin. 3u would work too and costs 158 g more. **1u does NOT work** — 9,583 mm^3,
-and those two insert batches overflow it.
+**3u, because 2u has no tab** (see the box above). On capacity alone 2u would have
+sufficed — the worst cases are 30 x M3*20 bolts (12,752 mm^3 packed loose) and
+40 x M3*8*5 inserts (12,566 mm^3), against 19,166 mm^3 in a 2u bin and 28,749 mm^3 in a
+3u. 1u fails on capacity as well as tabs: 9,583 mm^3, and those two insert batches
+overflow it.
 
 **Fingers fit.** A 1x1 interior is ~37 mm. The divided-bin alternative gave 12-19 mm
 compartments, which is tweezers-and-tilt territory. 8 cells over 27 categories caps any
 single-level design at ~23 mm even if perfectly divided — that is arithmetic, not
 preference.
 
-**Headroom: 30.7 mm used of 50.6 mm.** Columns stack independently, so any one cell can
+**Headroom: 44.7 mm used of 50.6 mm.** Columns stack independently, so any one cell can
 later take a 3u on top of a 2u (37.7 mm) if a category outgrows its bin, without
 touching the rest.
 
